@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="messagePrinter" class="hello.MessagePrinter">
+		<constructor-arg>
+			<ref bean="message" />
+		</constructor-arg>
+	</bean>
+	<bean id="message" class="hello.Message">
+	</bean>
+</beans>
