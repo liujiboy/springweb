@@ -13,9 +13,4 @@ public class BookController {
 	{
 		return bookService.getBook(id);
 	}
-	@RequestMapping(value="/updatePrice.do")
-	public void updatePrice(String id)
-	{
-		bookService.updatePrice(id);
-	}
 }

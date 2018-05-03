@@ -1,43 +1,30 @@
 package hello;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.persistence.EntityManagerFactory;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BookService {
+//	private HibernateTemplate ht;
+//	private SessionFactory hibernateFactory;
+//
+//	  @Autowired
+//	  public void SomeService(EntityManagerFactory factory) {
+//	    if(factory.unwrap(SessionFactory.class) == null){
+//	      throw new NullPointerException("factory is not a hibernate factory");
+//	    }
+//	    this.hibernateFactory = factory.unwrap(SessionFactory.class);
+//	    ht=new HibernateTemplate(hibernateFactory);
+//	  }
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	private BookRepository bookRepository;
 	public Book getBook(String id)
 	{
-		return jdbcTemplate.queryForObject("select * from book where id=?",new Object[] {id}, new RowMapper<Book>() {
-
-			@Override
-			public Book mapRow(ResultSet rs, int row) throws SQLException {
-				Book book=new Book();
-				book.setId(rs.getString("id"));
-				book.setName(rs.getString("name"));
-				book.setPrice(rs.getDouble("price"));
-				book.setDes(rs.getString("des"));
-				book.setImage(rs.getString("image"));
-				return book;
-			}
-			
-		});
+		return bookRepository.findById(id).get();
 	}
-	@Transactional
-	public void updatePrice(String id)
-	{
-		Book book=getBook(id);
-		if(book.getPrice()>=10)
-		{
-			jdbcTemplate.update("update book set price=100 where id=?", id);
-			throw new RuntimeException();
-		}
-	}
+	
 }
