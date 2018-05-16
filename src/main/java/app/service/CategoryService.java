@@ -22,7 +22,7 @@ public class CategoryService {
 		c.setName(name);
 		rep.save(c);
 	}
-	
+	@Transactional
 	public void initCategories()
 	{
 		if(!rep.existsById("001"))

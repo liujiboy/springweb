@@ -48,6 +48,7 @@ public class BookService {
 		book.setCategory(categoryRepository.getOne(categroyId));
 		bookRepository.save(book);
 	}
+	@Transactional
 	public void initBooks()
 	{
 		if(!bookRepository.existsById("b001"))
