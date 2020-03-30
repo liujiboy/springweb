@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 public class Application {
 
-    @Bean
+    @Bean("mockMessageService")
     MessageService mockMessageService() {
         return new MessageService() {
             public String getMessage() {
