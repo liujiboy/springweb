@@ -1,7 +1,5 @@
 package hello;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,15 +12,14 @@ public class Application {
     MessageService mockMessageService() {
         return new MessageService() {
             public String getMessage() {
-              return "Hello World!";
+              return "mockMessageService:Hello World!";
             }
         };
     }
+    @Bean
+    String buffer() {
+    		return "Appliccation:buffer";
+    }
 
-  public static void main(String[] args) {
-      ApplicationContext context = 
-          new AnnotationConfigApplicationContext(Application.class);
-      MessagePrinter printer = context.getBean(MessagePrinter.class);
-      printer.printMessage();
-  }
+
 }
