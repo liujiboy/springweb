@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.HashMap;
@@ -15,7 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
+
+import com.alibaba.fastjson.JSON;
 
 import annotation.RequestMapping;
 import annotation.RestController;
@@ -89,9 +89,8 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		Object obj=beansMap.get(m);
 		try {
-			Object o=m.invoke(obj, args);
-			JSONObject json=new JSONObject(o);
-			response.getWriter().write(json.toString());
+			Object ret=m.invoke(obj, args);
+			response.getWriter().write(JSON.toJSONString(ret));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
