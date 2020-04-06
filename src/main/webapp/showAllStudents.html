@@ -1,0 +1,22 @@
+<html>
+<meta charset="UTF-8">
+<head>
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#bt").click(function(){
+			$.get("getAllStudent.do",function(students){
+				str="";
+				for(var key in students)
+					str+="("+students[key].id+","+students[key].name+")<br>";
+				$("#info").html(str);
+			});
+		})
+	});
+</script>
+</head>
+<body>
+<input id="bt" type="button" value="显示"> <br>
+<span id="info"></span>
+</body>
+</html>

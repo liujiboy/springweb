@@ -1,4 +1,4 @@
-package domain;
+package springweb.domain;
 
 public class Student {
 	private String id;
