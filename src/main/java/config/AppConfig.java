@@ -1,19 +1,33 @@
 package config;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-
-import aspect.SimpleAspect;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableAspectJAutoProxy
+@EnableTransactionManagement
 @ComponentScan(basePackages= {"bean"})
 public class AppConfig {
 	@Bean
-	public SimpleAspect simpleAspect()
+	public DataSource dataSource() {
+		DriverManagerDataSource bean=new DriverManagerDataSource();
+		bean.setUrl("jdbc:mysql://localhost/book?useUnicode=true&characterEncoding=UTF-8");
+		bean.setPassword("root");
+		bean.setUsername("root");
+		bean.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		return bean;
+	}
+	@Bean
+	@Autowired
+	public DataSourceTransactionManager transactionManager(DataSource dataSource)
 	{
-		return new SimpleAspect();
+		DataSourceTransactionManager obj=new DataSourceTransactionManager(dataSource);
+		return obj;
 	}
 }

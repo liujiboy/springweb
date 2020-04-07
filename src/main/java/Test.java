@@ -1,9 +1,9 @@
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import bean.HelloWorld;
-import bean.Person;
 import config.AppConfig;
+import dao.HelloWorld;
+import dao.Person;
 
 public class Test {
 
