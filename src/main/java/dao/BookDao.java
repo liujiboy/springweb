@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -27,11 +29,11 @@ public class BookDao {
 			return book;
 		}
 	}
-
-
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+	@Autowired
+	public void setDataSource(DataSource dataSource) {
+		jdbcTemplate = new JdbcTemplate(dataSource);
+	}
 	@Transactional
 	public Boolean add(final Book book)  {
 		int row=jdbcTemplate.update("insert into book(id,name,price,des,image) values(?,?,?,?,?)",
