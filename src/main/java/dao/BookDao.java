@@ -16,6 +16,8 @@ import domain.Book;
 
 
 @Service
+//@Component
+//@@Repository
 public class BookDao {
 	private final class BookRowMapper implements RowMapper<Book> {
 		@Override
