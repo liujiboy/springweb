@@ -1,10 +1,10 @@
-package dao;
+package repository;
 
 import java.util.List;
 
 import domain.Student;
 
-public interface StudentDao {
+public interface StudentRepository {
 
 	public void addStudent(String id, String name, int age, String collegeId);
 

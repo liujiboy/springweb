@@ -1,27 +1,26 @@
-package dao.spring;
+package repository.jpa;
 
 import java.util.List;
 
-import org.hibernate.SessionFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import dao.CollegeDao;
-import dao.StudentDao;
 import domain.College;
 import domain.Student;
+import repository.CollegeRepository;
+import repository.StudentRepository;
 
 @Repository
-public class StudentDaoHibernateTemplate implements StudentDao {
-	private HibernateTemplate hibernateTemplate;
+public class StudentRepositoryJpa implements StudentRepository {
+	@PersistenceContext
+	private EntityManager em;
 	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		hibernateTemplate = new HibernateTemplate(sessionFactory);
-	}
-	@Autowired
-	private CollegeDao collegeDao;
+	private CollegeRepository collegeDao;
 	@Transactional
 	public  void addStudent(String id, String name, int age, String collegeId) {
 		College college = collegeDao.getCollegeById(collegeId);
@@ -30,12 +29,13 @@ public class StudentDaoHibernateTemplate implements StudentDao {
 		student.setAge(age);
 		student.setCollege(college);
 		student.setName(name);
-		hibernateTemplate.save(student);
+		em.persist(student);
 		
 	}
 
 	public  List<Student> getAllStudents() {
-		return (List<Student>) hibernateTemplate.find("from Student");
+		Query query=em.createQuery("from Student");
+		return (List<Student>) query.getResultList();
 
 	}
 }
