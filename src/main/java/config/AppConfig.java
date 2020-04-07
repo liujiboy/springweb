@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages= {"bean"})
+@ComponentScan(basePackages= {"dao"})
 public class AppConfig {
 	@Bean
 	public DataSource dataSource() {
