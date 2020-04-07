@@ -4,8 +4,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class HelloWorld {
-	public String sayHello()
+	public void sayHello()
 	{
-		return "hello world!";
+		System.out.println("hello world!");
+	}
+	public void sayHello(String name)
+	{
+		System.out.println("hello world! "+name);
 	}
 }

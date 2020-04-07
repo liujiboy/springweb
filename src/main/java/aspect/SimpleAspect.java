@@ -1,6 +1,8 @@
 package aspect;
 
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
@@ -16,4 +18,16 @@ public class SimpleAspect {
 	{
 		System.out.println("after say hello");
 	}
+	@AfterReturning("execution (** bean.Person.get*(..) ) ")
+	public void afterReturning()
+	{
+		System.out.println("afterReturning get*");
+	}
+	@AfterThrowing("execution (** bean.Person.*(..) ) ")
+	public void afterThrowing()
+	{
+		System.out.println("afterThrowing throw a exception");
+	}
+
+	
 }
