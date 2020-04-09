@@ -1,13 +1,10 @@
 package repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import domain.College;
 
-public interface CollegeRepository {
-	
-	public void addCollege(String id, String name);
+public interface CollegeRepository extends JpaRepository<College,String>{
 
-	public College getCollegeById(String id);
-
-	public void deleteById(String id);
 	
 }

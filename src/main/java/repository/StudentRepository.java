@@ -1,12 +1,9 @@
 package repository;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import domain.Student;
 
-public interface StudentRepository {
+public interface StudentRepository  extends JpaRepository<Student,String> {
 
-	public void addStudent(String id, String name, int age, String collegeId);
-
-	public List<Student> getAllStudents();
 }
