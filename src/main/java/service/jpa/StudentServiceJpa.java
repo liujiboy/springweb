@@ -40,4 +40,10 @@ public class StudentServiceJpa implements StudentService {
 		return studentRepository.findAll();
 	}
 
+	@Override
+	public void deleteStudentById(String id) {
+		studentRepository.deleteById(id);
+		
+	}
+
 }

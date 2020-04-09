@@ -17,15 +17,13 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	}
 	@Override
 	protected String[] getServletMappings() {	
-		return new String[]{"*.do"};
+		return new String[]{"/"};
 	}
 	@Override
 	protected Filter[] getServletFilters() {
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
-//        HiddenHttpMethodFilter filter= new HiddenHttpMethodFilter();
-//        filter.doFilter(request, response, filterChain);
         return new Filter[] {characterEncodingFilter};
 	}
 }

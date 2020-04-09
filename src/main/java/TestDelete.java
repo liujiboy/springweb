@@ -1,17 +1,12 @@
 
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import config.AppConfig;
-import service.CollegeService;
+import org.springframework.web.client.RestTemplate;
 
 public class TestDelete {
 
 	public static void main(String[] args) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		CollegeService collegeService=context.getBean(CollegeService.class);
-		collegeService.deleteAllColleges();
+		RestTemplate rest=new RestTemplate();
+		rest.delete("http://127.0.0.1:8080/springweb/college/delete");
 	}
 
 }
