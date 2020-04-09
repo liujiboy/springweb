@@ -9,7 +9,7 @@ import config.AppConfig;
 import domain.Student;
 import repository.StudentRepository;
 
-public class TestStudentDao {
+public class TestStudentRepository {
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		StudentRepository studentDao=context.getBean(StudentRepository.class);

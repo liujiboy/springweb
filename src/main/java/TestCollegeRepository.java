@@ -10,7 +10,7 @@ import repository.CollegeRepository;
 
 
 
-public class TestCollegeDao {
+public class TestCollegeRepository {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);

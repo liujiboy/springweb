@@ -50,7 +50,7 @@ public class AppConfig {
 
 	@Bean
 	@Autowired
-	public LocalContainerEntityManagerFactoryBean sessionFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
 		LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
 		bean.setDataSource(dataSource);
 		bean.setJpaVendorAdapter(jpaVendorAdapter);
