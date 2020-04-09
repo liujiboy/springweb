@@ -12,7 +12,7 @@ import service.CollegeService;
 
 
 
-public class TestCollegeDao {
+public class TestCollegeService {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);

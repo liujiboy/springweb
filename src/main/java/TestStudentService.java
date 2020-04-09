@@ -10,7 +10,7 @@ import domain.Student;
 import repository.StudentRepository;
 import service.StudentService;
 
-public class TestStudentDao {
+public class TestStudentService {
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		StudentService studentService=context.getBean(StudentService.class);
