@@ -5,7 +5,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#bt").click(function(){
-			$.get("getAllStudent.do",function(students){
+			$.get("student/all",function(students){
 				str="";
 				for(var key in students)
 					str+="("+students[key].id+","+students[key].name+")<br>";
