@@ -1,0 +1,1 @@
+create view book_category as select b.id as bookId,b.info as bookInfo,b.name as bookName,c.id as categoryId,c.code as categoryCode,c.name as categoryName  from books as b left join categories as c on b.category_id=c.id
