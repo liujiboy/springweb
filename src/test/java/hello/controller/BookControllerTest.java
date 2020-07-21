@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -21,20 +20,20 @@ import hello.domain.Book;
 import hello.domain.BookCategory;
 import hello.service.TestDataBase;
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class,webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes=Application.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BookControllerTest {
 
 	@Autowired
 	private TestDataBase testDataBase;
 
-	@Value("${server.port}")
+	@Value("${local.server.port}")
 	private int port;
 	@Value("${server.servlet.context-path}")
 	private String contextPath;
 
 	private String urlBase;
-
-	private TestRestTemplate restTemplate=new TestRestTemplate();
+	@Autowired
+	private TestRestTemplate restTemplate;
 
 	@Before
 	public void setUp() throws Exception {

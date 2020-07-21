@@ -29,12 +29,6 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>test</id>
-			<properties>
-				<active.profile>test</active.profile>
-			</properties>
-		</profile>
-		<profile>
 			<id>prod</id>
 			<properties>
 				<active.profile>prod</active.profile>
