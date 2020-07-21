@@ -21,13 +21,13 @@ import hello.domain.Book;
 import hello.domain.BookCategory;
 import hello.service.TestDataBase;
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class,webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes=Application.class,webEnvironment = WebEnvironment.RANDOM_PORT)
 public class BookControllerTest {
 
 	@Autowired
 	private TestDataBase testDataBase;
 
-	@Value("${server.port}")
+	@Value("${local.server.port}")
 	private int port;
 	@Value("${server.servlet.context-path}")
 	private String contextPath;

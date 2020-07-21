@@ -1,4 +1,19 @@
 #详细说明见https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html（访问时间2018年4月17日）
 spring:
-  profiles:
-    active: ${active.profile}
+   mvc:
+      view:
+         suffix:   .jsp   ###  视图后缀  #########
+         prefix: /WEB-INF/jsp/ ###  视图前缀  #########
+   datasource:
+      url: jdbc:mysql://localhost:3306/book_dev?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: root
+server:
+   port: 8080    ### 默认端口 #########
+   servlet:
+      context-path: /springweb    ### 根目录 ########
+
+mybatis:
+   mapperLocations: classpath:mapper/*.xml
+   #config-location: classpath:mybatis-config.xml 感觉现在可以不用
+   typeAliasesPackage: hello.domain
