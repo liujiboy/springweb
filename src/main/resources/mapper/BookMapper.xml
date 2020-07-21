@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hello.mapper.BookMapper">
+    <resultMap id="BookResultMap" type="hello.domain.Book">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="info" jdbcType="VARCHAR" property="info" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="category_id" jdbcType="BIGINT" property="categoryId" />
+    </resultMap>
+   
+ 
+    <select id="getBookById" resultMap="BookResultMap">
+        select * from books where id = #{id}
+    </select>
+<!--    这么搞太复杂了-->
+<!--     <resultMap id="bookCategoryMap" type="hello.domain.BookCategory">
+        <result column="bookId" jdbcType="BIGINT" property="bookId" />
+        <result column="bookInfo" jdbcType="VARCHAR" property="bookInfo" />
+        <result column="bookName" jdbcType="VARCHAR" property="bookName" />
+        <result column="categoryId" jdbcType="BIGINT" property="categoryId" />
+        <result column="categoryCode" jdbcType="VARCHAR" property="categoryCode" />
+        <result column="categoryName" jdbcType="VARCHAR" property="categoryName" />
+    </resultMap>
+    <select id="getBookCategory" resultMap="bookCategoryMap">
+        select b.id as bookId,b.info as bookInfo,b.name as bookName,c.id as categoryId,c.code as categoryCode,c.name as categoryName  from books as b left join categories as c on b.category_id=c.id
+    </select> -->
+</mapper>
