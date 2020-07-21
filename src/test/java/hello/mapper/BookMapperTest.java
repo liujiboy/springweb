@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import hello.Application;
 import hello.domain.Book;
 import hello.domain.BookCategory;
-import hello.domain.Category;
 import hello.service.TestDataBase;
 
 @RunWith(SpringRunner.class)
