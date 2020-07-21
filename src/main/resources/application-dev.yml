@@ -1,5 +1,6 @@
 #详细说明见https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html（访问时间2018年4月17日）
 spring:
+   profiles: dev
    mvc:
       view:
          suffix:   .jsp   ###  视图后缀  #########
