@@ -90,7 +90,7 @@
 			</resource>
 			<!-- 不对application.xml以外的文件进行过滤 -->
 			<resource>
-				<filtering>true</filtering>
+				<filtering>false</filtering>
 				<directory>src/main/resources</directory>
 				<excludes>
 					<exclude>application.yml</exclude>
@@ -121,7 +121,6 @@
 					<useDefaultDelimiters>true</useDefaultDelimiters>
 				</configuration>
 			</plugin> 
-
 		</plugins>
 	</build>
 </project>
